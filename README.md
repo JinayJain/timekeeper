@@ -1,5 +1,7 @@
 # Telling the Time with Computer Vision
 
+![Image Prediction](preds.png)
+
 Why learn how to tell the time when your computer can?
 
 ## Usage
