@@ -22,7 +22,7 @@ def tell_time(img):
     if len(summary) == 1:  # the minute and hour hand might be clustered together if they overlap
         summary.append(summary[0])
 
-    print(f"Summary list {summary}")
+    # print(f"Summary list {summary}")
 
     hours, minutes = time_from_angles(summary[1][1], summary[0][1])
 

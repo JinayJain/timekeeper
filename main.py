@@ -2,7 +2,10 @@ from detection import detect_clock
 from analysis import tell_time
 import cv2
 
-img = cv2.imread("./data/nolines.jpg")
+# Change this to detect on another image
+path = "./data/minimal.jpg"
+
+img = cv2.imread(path)
 
 bbox = detect_clock(img)
 
@@ -10,7 +13,7 @@ if bbox is None:
     print("No clock was found in this image")
     exit(0)
 
-print(f"Predicted bounding box: {bbox}")
+# print(f"Predicted bounding box: {bbox}")
 
 img_boxed = img.copy()
 cv2.rectangle(img_boxed, (bbox[0], bbox[1]),
@@ -25,13 +28,15 @@ clock = cv2.resize(clock, (400, 400))
 
 hours, minutes = tell_time(clock)
 
-cv2.putText(clock, f"{hours}:{minutes:02}", (20, 380), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 255), 4)
+time_string = f"{hours}:{minutes:02}"
+cv2.putText(clock, time_string, (20, 380), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 255), 4)
 cv2.rectangle(clock, (0, 0), (400, 400), (0, 0, 0), 3)
 
-print(img.shape, clock.shape)
-img[:400, :400, :]= clock
+print(time_string)
 
-cv2.imshow("clock", img)
+img[:400, :400, :] = clock
+
+cv2.imshow("clock", clock)
 cv2.imwrite("preds.png", clock)
 
 while 1:
