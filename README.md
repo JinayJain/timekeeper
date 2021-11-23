@@ -14,6 +14,4 @@ packages should be prerequisites of these).
 3. opencv-python
 4. matplotlib
 
-Change the **path** variable in `main.py` to the path of the image you want to detect on.
-
-Run `python main.py` and you should see your prediction displayed! Predictions are also saved to `preds.png`.
+Run `python main.py <FILE>` and you should see your prediction displayed! Predictions are also saved to `preds.png`.
