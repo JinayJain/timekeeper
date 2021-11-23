@@ -1,9 +1,14 @@
 from detection import detect_clock
 from analysis import tell_time
+import sys
 import cv2
 
+if len(sys.argv) != 2:
+    print("Usage: python main.py <image_path>")
+    exit(1)
+
 # Change this to detect on another image
-path = "./data/minimal.jpg"
+path = sys.argv[1]
 
 img = cv2.imread(path)
 
@@ -23,13 +28,20 @@ img_boxed = cv2.putText(img_boxed, "clock", (
 
 # cv2.imshow('image', img_boxed)
 
+cv2.imshow('clock', img_boxed)
+cv2.waitKey(0)
+
 clock = img[bbox[1]:bbox[3], bbox[0]:bbox[2]]
 clock = cv2.resize(clock, (400, 400))
+
+cv2.imshow('clock', clock)
+cv2.waitKey(0)
 
 hours, minutes = tell_time(clock)
 
 time_string = f"{hours}:{minutes:02}"
-cv2.putText(clock, time_string, (20, 380), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 255), 4)
+cv2.putText(clock, time_string, (220, 380),
+            cv2.FONT_HERSHEY_SIMPLEX, 2, (255, 50, 50), 6)
 cv2.rectangle(clock, (0, 0), (400, 400), (0, 0, 0), 3)
 
 print(time_string)
