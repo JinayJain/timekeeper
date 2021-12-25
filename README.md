@@ -1,5 +1,7 @@
 # Telling the Time with Computer Vision
 
+Read the [blog post](https://blog.jinay.dev/posts/timekeeper/) for a full explanation of the project!
+
 ![Image Prediction](preds.png)
 
 Why learn how to tell the time when your computer can?
